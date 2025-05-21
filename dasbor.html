@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard Clone</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+    body {
+      background-color: #f8f8f8;
+      display: flex;
+    }
+    .sidebar {
+      width: 240px;
+      background: #ffffff;
+      padding: 20px;
+      border-right: 1px solid #e5e5e5;
+      height: 100vh;
+    }
+    .sidebar h1 {
+      font-size: 24px;
+      margin-bottom: 30px;
+    }
+    .sidebar nav ul {
+      list-style: none;
+    }
+    .sidebar nav ul li {
+      margin-bottom: 15px;
+      font-size: 14px;
+      color: #333;
+      cursor: pointer;
+    }
+    .main-content {
+      flex: 1;
+      padding: 20px;
+    }
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .greeting {
+      font-weight: 600;
+      font-size: 18px;
+      margin: 20px 0;
+    }
+    .chart {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
+      margin-bottom: 20px;
+    }
+    .stats {
+      display: flex;
+      gap: 20px;
+    }
+    .card {
+      flex: 1;
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+    }
+    .right-panel {
+      width: 300px;
+      background: #fff;
+      border-left: 1px solid #eee;
+      padding: 20px;
+    }
+    .messages h3 {
+      font-size: 16px;
+      margin-bottom: 10px;
+    }
+    .message-item {
+      background: #f9f9f9;
+      padding: 10px;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <aside class="sidebar">
+    <h1>Payd</h1>
+    <nav>
+      <ul>
+        <li><strong>Payments</strong></li>
+        <li>transaksi</li>
+        <li>pelanggan</li>
+        <li>pembayaran</li>
+        <li>saldo</li>
+        <li>langganan</li>
+        <li>rencana pembayaran</li>
+        <br>
+        <li><strong>Commerce</strong></li>
+        <li>referensi</li>
+        <li>Audit logs</li>
+        <li>pengaturan</li>
+      </ul>
+    </nav>
+  </aside>
+  <main class="main-content">
+    <div class="header">
+      <div class="search-status">
+        <p class="greeting">👋 Hey firza! kamu memperoleh Rp.3,000,000 bulan ini.</p>
+      </div>
+    </div>
+    <div class="chart">
+      <h3>30 hari terakhir</h3>
+      <canvas id="incomeChart" width="400" height="150"></canvas>
+    </div>
+    <div class="stats">
+      <div class="card">
+        <h4>Success rate</h4>
+        <p>98%</p>
+        <p>150 Successful, 1 Unsuccessful</p>
+      </div>
+      <div class="card">
+        <h4>Payment issues</h4>
+        <p>Total: 19</p>
+        <p>Customer: 1, Fraud: 5, Bank: 3, System: 10</p>
+      </div>
+    </div>
+  </main>
+  <aside class="right-panel">
+    <div class="messages">
+      <h3>Messages</h3>
+      <div class="message-item">Putri: I need some maintenance...</div>
+      <div class="message-item">Nadia: I got your email ad and...</div>
+      <div class="message-item">Kiki: I need some maintenance...</div>
+      <div class="message-item">Fira: Thank you so much for ...</div>
+    </div>
+  </aside>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script>
+    const ctx = document.getElementById('incomeChart').getContext('2d');
+    new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Mar 1 - 7', 'Mar 8 - 14', 'Mar 15 - 21', 'Mar 22 - 28', 'Final wk'],
+        datasets: [{
+          label: 'Income',
+          data: [50000, 120000, 120000, 120000, 180000],
+          backgroundColor: '#D8B4FE'
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        },
+        plugins: {
+          legend: {
+            display: false
+          }
+        }
+      }
+    });
+  </script>
+</body>
+</html>
